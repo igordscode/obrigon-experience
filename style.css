@@ -132,7 +132,7 @@ img {
 }
 
 .loader-logo {
-    width: clamp(200px, 40vw, 600px);
+    width: clamp(200px, 40vw, 500px);
     opacity: 0;
     transform: translateY(20px);
 }
