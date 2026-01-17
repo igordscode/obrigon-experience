@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OBRIGON — Enter The Ritual</title>
-    <meta name="description" content="Moda gótica de luxo artesanal. Worn by Madonna, Luísa Sonza, Matuê.">
+    <meta name="description" content="Unheimlich. O estranho familiar. Moda gótica de luxo artesanal.">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,294 +24,61 @@
 </head>
 
 <body>
-    <!-- Loader -->
-    <div class="loader" id="loader">
-        <div class="loader-content">
-            <div class="loader-logo">
-                <img src="../assets/logo.png" alt="OBRIGON">
-            </div>
-            <div class="loader-text">Entrando no ritual...</div>
-            <div class="loader-bar">
-                <div class="loader-progress"></div>
-            </div>
-        </div>
+    <!-- Grain Overlay (Global) -->
+    <div class="grain-overlay"></div>
+
+    <!-- Custom Cursor (Eye) -->
+    <div class="cursor-eye">
+        <div class="cursor-pupil"></div>
     </div>
 
-    <!-- Cursor -->
-    <div class="cursor" id="cursor"></div>
-    <div class="cursor-follower" id="cursor-follower"></div>
-
-    <!-- Navigation -->
-    <nav class="nav" id="nav">
-        <a href="#" class="nav-logo">
-            <img src="../assets/logo.png" alt="OBRIGON">
-        </a>
-        <div class="nav-links">
-            <a href="#manifesto" class="nav-link" data-hover="MANIFESTO">MaNifEstO</a>
-            <a href="#worn-by" class="nav-link" data-hover="WORN BY">WoRn By</a>
-            <a href="#collection" class="nav-link" data-hover="COLEÇÃO">CoLeÇãO</a>
-            <a href="https://obrigon.com" class="nav-link nav-cta" target="_blank">EnTrAr nA LoJa</a>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-        <div class="hero-bg">
-            <div class="hero-grain"></div>
-            <div class="hero-gradient"></div>
+    <!-- Sessão 1: O ALTAR -->
+    <section class="altar" id="altar">
+        <div class="altar-bg">
+            <div class="altar-vignette"></div>
         </div>
 
-        <div class="hero-content">
-            <div class="hero-eyebrow">
-                <span class="hero-eyebrow-line"></span>
-                <span class="hero-eyebrow-text">MODA GÓTICA DE LUXO</span>
-                <span class="hero-eyebrow-line"></span>
+        <div class="altar-content">
+            <!-- Logo -->
+            <div class="altar-logo">
+                <img src="../assets/logo.png" alt="OBRIGON">
             </div>
 
-            <h1 class="hero-title">
-                <span class="hero-title-line">
-                    <span class="hero-title-word" data-split>CADA</span>
-                    <span class="hero-title-word" data-split>PEÇA</span>
-                </span>
-                <span class="hero-title-line">
-                    <span class="hero-title-word" data-split>É UM</span>
-                </span>
-                <span class="hero-title-line hero-title-accent">
-                    <span class="hero-title-word" data-split>RITUAL</span>
-                </span>
-            </h1>
-
-            <p class="hero-subtitle">
-                Artesanal. Exclusivo. Transcendente.
-            </p>
-
-            <div class="hero-cta">
-                <a href="https://obrigon.com" class="btn btn-primary" target="_blank">
-                    <span class="btn-text">Explorar Coleção</span>
-                    <span class="btn-icon">→</span>
-                </a>
-                <a href="#manifesto" class="btn btn-ghost">
-                    <span class="btn-text">O Manifesto</span>
-                </a>
-            </div>
-        </div>
-
-        <div class="hero-scroll">
-            <div class="hero-scroll-line"></div>
-            <span class="hero-scroll-text">Scroll</span>
-        </div>
-
-        <!-- Floating Elements -->
-        <div class="hero-float hero-float-1"></div>
-        <div class="hero-float hero-float-2"></div>
-        <div class="hero-float hero-float-3"></div>
-    </section>
-
-    <!-- Manifesto Section -->
-    <section class="manifesto" id="manifesto">
-        <div class="manifesto-bg">
-            <div class="manifesto-lines"></div>
-        </div>
-
-        <div class="container">
-            <div class="manifesto-header">
-                <span class="section-number">01</span>
-                <h2 class="section-title">O MaNifEstO</h2>
+            <!-- Produto Flutuante -->
+            <div class="altar-product">
+                <img src="../image/84460_7178056647.jpg" alt="Charm Jumba" class="product-image">
+                <div class="product-glow"></div>
             </div>
 
-            <div class="manifesto-content">
-                <div class="manifesto-text">
-                    <p class="manifesto-quote">
-                        "Não fazemos roupas.<br>
-                        <span class="highlight">Criamos artefatos.</span>"
-                    </p>
-
-                    <div class="manifesto-body">
-                        <p>Cada peça Obrigon nasce de um ritual. Corte a corte, costura a costura, látex a látex —
-                            transformamos matéria em magia vestível.</p>
-                        <p>Somos a fronteira entre o underground e o luxo. O submundo elevado à alta costura.</p>
-                        <p>Quando Madonna, Luísa Sonza e Matuê vestem Obrigon, não estão usando roupas. Estão portando
-                            <span class="highlight">símbolos de poder</span>.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="manifesto-visual">
-                    <div class="manifesto-image-wrapper">
-                        <div class="manifesto-image" id="manifesto-image"
-                            style="background-image: url('image/84460_6701068477.jpg');"></div>
-                        <div class="manifesto-image-frame"></div>
-                    </div>
-                </div>
+            <!-- Pedestal -->
+            <div class="altar-pedestal">
+                <div class="pedestal-text">ENTRAR NO CULTO</div>
             </div>
+
+            <!-- Velas -->
+            <div class="candle candle-left"></div>
+            <div class="candle candle-right"></div>
+
+            <!-- Fumaça (CSS) -->
+            <div class="smoke smoke-1"></div>
+            <div class="smoke smoke-2"></div>
+            <div class="smoke smoke-3"></div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="altar-scroll">
+            <div class="scroll-line"></div>
+            <span class="scroll-text">DESCER</span>
         </div>
     </section>
 
-    <!-- Worn By Section -->
-    <section class="worn-by" id="worn-by">
+    <!-- Sessão 2: A PROCISSÃO (Placeholder) -->
+    <section class="procession" id="procession">
         <div class="container">
-            <div class="worn-by-header">
-                <span class="section-number">02</span>
-                <h2 class="section-title">WoRn By</h2>
-                <p class="section-subtitle">Quem porta nossos artefatos</p>
-            </div>
-
-            <div class="worn-by-marquee">
-                <div class="marquee-track">
-                    <span class="marquee-item">ANITTA</span>
-                    <span class="marquee-divider">✦</span>
-                    <span class="marquee-item">LUÍSA SONZA</span>
-                    <span class="marquee-divider">✦</span>
-                    <span class="marquee-item">MATUÊ</span>
-                    <span class="marquee-divider">✦</span>
-                    <span class="marquee-item">LUDMILLA</span>
-                    <span class="marquee-divider">✦</span>
-                    <span class="marquee-item">ANITTA</span>
-                    <span class="marquee-divider">✦</span>
-                    <span class="marquee-item">LUÍSA SONZA</span>
-                    <span class="marquee-divider">✦</span>
-                    <span class="marquee-item">MATUÊ</span>
-                    <span class="marquee-divider">✦</span>
-                    <span class="marquee-item">LUDMILLA</span>
-                    <span class="marquee-divider">✦</span>
-                </div>
-            </div>
-
-            <div class="worn-by-grid">
-                <div class="worn-by-card" data-artist="anitta">
-                    <div class="worn-by-card-image"
-                        style="background-image: url('image/famosos/annitaobrigon.jpg'); background-size: cover; background-position: center;">
-                    </div>
-                    <div class="worn-by-card-overlay">
-                        <span class="worn-by-card-name">ANITTA</span>
-                    </div>
-                </div>
-                <div class="worn-by-card" data-artist="luisa">
-                    <div class="worn-by-card-image"
-                        style="background-image: url('image/famosos/luisasonza2.jpg'); background-size: cover; background-position: center;">
-                    </div>
-                    <div class="worn-by-card-overlay">
-                        <span class="worn-by-card-name">LUÍSA SONZA</span>
-                    </div>
-                </div>
-                <div class="worn-by-card" data-artist="matue">
-                    <div class="worn-by-card-image"
-                        style="background-image: url('image/famosos/matue1.jpg'); background-size: cover; background-position: center;">
-                    </div>
-                    <div class="worn-by-card-overlay">
-                        <span class="worn-by-card-name">MATUÊ</span>
-                    </div>
-                </div>
-            </div>
+            <h2 class="section-title">A PROCISSÃO</h2>
+            <p class="section-subtitle">Em breve...</p>
         </div>
     </section>
-
-    <!-- Collection Section -->
-    <section class="collection" id="collection">
-        <div class="container">
-            <div class="collection-header">
-                <span class="section-number">03</span>
-                <h2 class="section-title">CoLeÇãO</h2>
-                <p class="section-subtitle">Artefatos disponíveis</p>
-            </div>
-
-            <div class="collection-categories">
-                <button class="collection-cat active" data-category="all">TODOS</button>
-                <button class="collection-cat" data-category="tops">TOPS</button>
-                <button class="collection-cat" data-category="jackets">JAQUETAS</button>
-                <button class="collection-cat" data-category="charms">CHARMS</button>
-            </div>
-
-            <div class="collection-grid">
-                <div class="collection-item" data-category="jackets">
-                    <div class="collection-item-image"
-                        style="background-image: url('image/84460_6701068477.jpg'); background-size: cover; background-position: center;">
-                        <div class="collection-item-tag">EXCLUSIVO</div>
-                    </div>
-                    <div class="collection-item-info">
-                        <h3 class="collection-item-name">Moletom Asas</h3>
-                        <span class="collection-item-price">R$ 915,00</span>
-                    </div>
-                </div>
-                <div class="collection-item" data-category="tops">
-                    <div class="collection-item-image"
-                        style="background-image: url('image/1766064383.jpg'); background-size: cover; background-position: center;">
-                        <div class="collection-item-tag">DROP DERMIS II</div>
-                    </div>
-                    <div class="collection-item-info">
-                        <h3 class="collection-item-name">Top Gótico</h3>
-                        <span class="collection-item-price">R$ 445,00</span>
-                    </div>
-                </div>
-                <div class="collection-item" data-category="jackets">
-                    <div class="collection-item-image"
-                        style="background-image: url('image/84460_7060168740.jpg'); background-size: cover; background-position: center;">
-                    </div>
-                    <div class="collection-item-info">
-                        <h3 class="collection-item-name">Jaqueta Destruída</h3>
-                        <span class="collection-item-price">R$ 835,00</span>
-                    </div>
-                </div>
-                <div class="collection-item" data-category="charms">
-                    <div class="collection-item-image"
-                        style="background-image: url('image/84460_7178056647.jpg'); background-size: cover; background-position: center;">
-                    </div>
-                    <div class="collection-item-info">
-                        <h3 class="collection-item-name">Charm Jumba</h3>
-                        <span class="collection-item-price">R$ 245,00</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="collection-cta">
-                <a href="https://obrigon.com" class="btn btn-primary btn-large" target="_blank">
-                    <span class="btn-text">Ver Coleção Completa</span>
-                    <span class="btn-icon">→</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer CTA -->
-    <section class="footer-cta">
-        <div class="footer-cta-bg">
-            <div class="footer-cta-gradient"></div>
-        </div>
-
-        <div class="container">
-            <h2 class="footer-cta-title">
-                Pronto para o<br>
-                <span class="highlight">RITUAL?</span>
-            </h2>
-            <a href="https://obrigon.com" class="btn btn-white btn-xlarge" target="_blank">
-                <span class="btn-text">ENTRAR NA LOJA</span>
-                <span class="btn-icon">→</span>
-            </a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <a href="#" class="footer-logo">
-                        <img src="assets/logo.png" alt="OBRIGON">
-                    </a>
-                    <p class="footer-tagline">Moda gótica de luxo artesanal</p>
-                </div>
-
-                <div class="footer-links">
-                    <a href="https://instagram.com/obrigon" target="_blank" class="footer-social">Instagram</a>
-                    <a href="https://obrigon.com" target="_blank" class="footer-social">Loja</a>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <span class="footer-copy">© 2026 OBRIGON. Todos os direitos reservados.</span>
-            </div>
-        </div>
-    </footer>
 
     <script src="main.js"></script>
 </body>
