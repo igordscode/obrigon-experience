@@ -1,0 +1,53 @@
+/* Adjusting Altar Composition */
+
+.altar-content {
+    gap: var(--spacing-md);
+    /* Reduced gap to bring elements closer */
+}
+
+/* Make product larger */
+.altar-product {
+    width: 400px;
+    height: 400px;
+    /* Add a reflection below */
+    -webkit-box-reflect: below 0px linear-gradient(to bottom, transparent, transparent 80%, rgba(255, 255, 255, 0.2));
+}
+
+/* Visual Column/Base below the product */
+.altar-column {
+    position: absolute;
+    bottom: 25%;
+    /* Start from behind the button area */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 300px;
+    background: linear-gradient(to top, rgba(10, 10, 10, 1) 0%, rgba(20, 20, 20, 0.8) 40%, transparent 100%);
+    border-left: 1px solid rgba(255, 45, 85, 0.2);
+    border-right: 1px solid rgba(255, 45, 85, 0.2);
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0;
+    animation: fadeIn 2s ease-out 1s forwards;
+}
+
+/* Enhance shadows */
+.product-glow {
+    width: 150%;
+    height: 150%;
+    opacity: 0.4;
+    background: radial-gradient(circle, rgba(255, 45, 85, 0.2) 0%, transparent 60%);
+}
+
+@media (max-width: 768px) {
+    .altar-product {
+        width: 280px;
+        height: 280px;
+    }
+
+    .altar-column {
+        width: 150px;
+        height: 200px;
+        bottom: 30%;
+    }
+}
