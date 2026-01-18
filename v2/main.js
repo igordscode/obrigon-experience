@@ -6,6 +6,19 @@
 console.log('🖤 OBRIGON v2 — Entering the ritual...');
 
 // ========================================
+// LOADER
+// ========================================
+
+const loader = document.querySelector('.loader');
+
+// Hide loader after 3 seconds
+setTimeout(() => {
+    if (loader) {
+        loader.classList.add('hidden');
+    }
+}, 3000);
+
+// ========================================
 // LENIS SMOOTH SCROLL
 // ========================================
 
