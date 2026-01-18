@@ -1,53 +1,172 @@
-/* Adjusting Altar Composition */
+/* ========================================
+   ALTAR REDESIGN (Stone Structure)
+   ======================================== */
 
 .altar-content {
-    gap: var(--spacing-md);
-    /* Reduced gap to bring elements closer */
+    gap: 0;
+    /* Elements stack directly */
 }
 
-/* Make product larger */
+/* 1. The Levitating Product */
 .altar-product {
-    width: 400px;
-    height: 400px;
-    /* Add a reflection below */
-    -webkit-box-reflect: below 0px linear-gradient(to bottom, transparent, transparent 80%, rgba(255, 255, 255, 0.2));
+    width: 350px;
+    height: 350px;
+    z-index: 10;
+    margin-bottom: 20px;
+    /* Stronger reflection/shadow on the slab */
+    filter: drop-shadow(0 50px 30px rgba(0, 0, 0, 0.8));
+    animation: float 6s ease-in-out infinite;
 }
 
-/* Visual Column/Base below the product */
-.altar-column {
+/* 2. The Altar Structure Container */
+.altar-structure {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -40px;
+    /* Slight overlap with levitation zone */
+}
+
+/* 3. The Top Slab (Mesa do Altar) */
+.altar-slab {
+    width: 600px;
+    height: 40px;
+    background: linear-gradient(to bottom, #2a2a2a 0%, #111 100%);
+    border-top: 1px solid #444;
+    border-bottom: 1px solid #000;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 1);
+    z-index: 5;
+    position: relative;
+}
+
+/* Candles sitting on the slab */
+.altar-candles {
     position: absolute;
-    bottom: 25%;
-    /* Start from behind the button area */
+    top: -50px;
+    /* Candles sit on top */
+    width: 100%;
+    height: 60px;
+    pointer-events: none;
+}
+
+.candle-instance {
+    position: absolute;
+    bottom: 0;
+    width: 12px;
+    height: 40px;
+    background: linear-gradient(to right, #333, #111);
+    border-radius: 2px;
+}
+
+/* Candle Flames */
+.candle-instance::before {
+    content: '';
+    position: absolute;
+    top: -15px;
     left: 50%;
     transform: translateX(-50%);
-    width: 200px;
-    height: 300px;
-    background: linear-gradient(to top, rgba(10, 10, 10, 1) 0%, rgba(20, 20, 20, 0.8) 40%, transparent 100%);
-    border-left: 1px solid rgba(255, 45, 85, 0.2);
-    border-right: 1px solid rgba(255, 45, 85, 0.2);
-    z-index: -1;
-    pointer-events: none;
-    opacity: 0;
-    animation: fadeIn 2s ease-out 1s forwards;
+    width: 10px;
+    height: 20px;
+    background: radial-gradient(circle, #ff5500 0%, transparent 70%);
+    border-radius: 50%;
+    animation: flicker 0.1s infinite alternate;
+    opacity: 0.8;
 }
 
-/* Enhance shadows */
-.product-glow {
-    width: 150%;
-    height: 150%;
-    opacity: 0.4;
-    background: radial-gradient(circle, rgba(255, 45, 85, 0.2) 0%, transparent 60%);
+/* Positioning candles on the slab */
+.c1 {
+    left: 10%;
+    height: 50px;
 }
 
+.c2 {
+    left: 15%;
+    height: 35px;
+}
+
+.c3 {
+    right: 10%;
+    height: 45px;
+}
+
+.c4 {
+    right: 15%;
+    height: 30px;
+}
+
+/* 4. The Main Monolith (Base) */
+.altar-monolith {
+    width: 400px;
+    height: 250px;
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)),
+        url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.5" numOctaves="3"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.1"/></svg>'),
+        linear-gradient(to bottom, #1a1a1a 0%, #050505 100%);
+    border-left: 1px solid #222;
+    border-right: 1px solid #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.9);
+    position: relative;
+}
+
+/* Inscription Area (The Button) */
+.altar-inscription {
+    padding: 20px 40px;
+    border: 1px solid rgba(255, 45, 85, 0.3);
+    background: rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+}
+
+.altar-inscription:hover {
+    border-color: var(--accent-red);
+    box-shadow: 0 0 30px rgba(255, 45, 85, 0.2);
+    background: rgba(255, 45, 85, 0.05);
+}
+
+.altar-inscription h2 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: #888;
+    letter-spacing: 0.3em;
+    margin: 0;
+    transition: color 0.3s;
+}
+
+.altar-inscription:hover h2 {
+    color: var(--white);
+    text-shadow: 0 0 10px var(--accent-red);
+}
+
+/* 5. The Base Steps */
+.altar-steps {
+    width: 700px;
+    height: 30px;
+    background: #080808;
+    border-top: 1px solid #222;
+    margin-top: 0;
+}
+
+/* Mobile Adjustments */
 @media (max-width: 768px) {
-    .altar-product {
-        width: 280px;
-        height: 280px;
+    .altar-slab {
+        width: 90vw;
     }
 
-    .altar-column {
-        width: 150px;
-        height: 200px;
-        bottom: 30%;
+    .altar-monolith {
+        width: 80vw;
+    }
+
+    .altar-steps {
+        width: 100vw;
+    }
+
+    .altar-product {
+        width: 250px;
+        height: 250px;
     }
 }
