@@ -107,10 +107,209 @@ gsap.to('.altar-scroll', {
 });
 
 // ========================================
-// SESSÃO 2: A PROCISSÃO (Placeholder)
+// SESSÃO 2: A PROCISSÃO (Scroll Horizontal)
 // ========================================
 
-// TODO: Implementar scroll horizontal
+const processionSection = document.querySelector('.procession');
+const processionTrack = document.querySelector('.procession-track');
+
+if (processionSection && processionTrack) {
+    gsap.to(processionTrack, {
+        x: () => -(processionTrack.scrollWidth - window.innerWidth),
+        ease: 'none',
+        scrollTrigger: {
+            trigger: processionSection,
+            pin: true,
+            scrub: 1,
+            end: () => `+=${processionTrack.scrollWidth - window.innerWidth}`,
+            invalidateOnRefresh: true
+        }
+    });
+
+    // Fade in items
+    gsap.utils.toArray('.procession-item').forEach((item, i) => {
+        gsap.from(item, {
+            opacity: 0,
+            scale: 0.8,
+            scrollTrigger: {
+                trigger: item,
+                containerAnimation: gsap.getById(processionTrack),
+                start: 'left right',
+                end: 'left center',
+                scrub: true
+            }
+        });
+    });
+
+    // CTA buttons (link to Shopify)
+    document.querySelectorAll('.procession-cta').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const product = e.target.closest('.procession-item').dataset.product;
+            console.log(`🛒 Invoking product: ${product}`);
+            // window.location.href = `https://obrigon.com/products/${product}`;
+        });
+    });
+}
+
+// ========================================
+// SESSÃO 3: OS INICIADOS
+// ========================================
+
+// Scroll reveal
+gsap.utils.toArray('.initiated-card').forEach((card, i) => {
+    gsap.from(card, {
+        opacity: 0,
+        y: 100,
+        scrollTrigger: {
+            trigger: card,
+            start: 'top 80%',
+            end: 'top 50%',
+            scrub: true
+        }
+    });
+});
+
+// ========================================
+// SESSÃO 4: A MEMBRANA (Manifesto)
+// ========================================
+
+const membraneBg = document.querySelector('.membrane-bg');
+
+if (membraneBg) {
+    document.addEventListener('mousemove', (e) => {
+        const x = e.clientX / window.innerWidth;
+        const y = e.clientY / window.innerHeight;
+
+        membraneBg.style.setProperty('--mouse-x', `${x * 100}%`);
+        membraneBg.style.setProperty('--mouse-y', `${y * 100}%`);
+    });
+}
+
+// Text reveal
+gsap.from('.membrane-quote', {
+    opacity: 0,
+    y: 50,
+    scrollTrigger: {
+        trigger: '.membrane-quote',
+        start: 'top 80%',
+        end: 'top 50%',
+        scrub: true
+    }
+});
+
+gsap.from('.membrane-text p', {
+    opacity: 0,
+    y: 30,
+    stagger: 0.2,
+    scrollTrigger: {
+        trigger: '.membrane-text',
+        start: 'top 70%',
+        end: 'top 40%',
+        scrub: true
+    }
+});
+
+// ========================================
+// SESSÃO 5: A ALUCINAÇÃO (Editorial)
+// ========================================
+
+// Glitch effect on scroll
+const hallucinationGlitch = document.querySelector('.hallucination-glitch');
+
+if (hallucinationGlitch) {
+    ScrollTrigger.create({
+        trigger: '.hallucination',
+        start: 'top center',
+        end: 'bottom center',
+        onUpdate: (self) => {
+            const progress = self.progress;
+            const glitchIntensity = Math.sin(progress * 20) * 0.3;
+            hallucinationGlitch.style.opacity = Math.abs(glitchIntensity);
+        }
+    });
+}
+
+// ========================================
+// SESSÃO 6: A AUTÓPSIA
+// ========================================
+
+const uvLight = document.querySelector('.uv-light');
+const autopsyDetails = document.querySelectorAll('.autopsy-detail');
+
+if (uvLight && autopsyDetails.length > 0) {
+    document.addEventListener('mousemove', (e) => {
+        uvLight.style.left = e.clientX - 100 + 'px';
+        uvLight.style.top = e.clientY - 100 + 'px';
+
+        // Reveal details near UV light
+        autopsyDetails.forEach(detail => {
+            const rect = detail.getBoundingClientRect();
+            const detailX = rect.left + rect.width / 2;
+            const detailY = rect.top + rect.height / 2;
+
+            const distance = Math.hypot(e.clientX - detailX, e.clientY - detailY);
+
+            if (distance < 200) {
+                detail.classList.add('revealed');
+            } else {
+                detail.classList.remove('revealed');
+            }
+        });
+    });
+}
+
+// Product reveal
+gsap.from('.autopsy-image', {
+    opacity: 0,
+    scale: 0.8,
+    scrollTrigger: {
+        trigger: '.autopsy-image',
+        start: 'top 70%',
+        end: 'top 40%',
+        scrub: true
+    }
+});
+
+// ========================================
+// SESSÃO 7: O VAZIO (Footer)
+// ========================================
+
+// Form handling
+const voidForm = document.querySelector('.void-form');
+
+if (voidForm) {
+    voidForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = e.target.querySelector('.pact-input').value;
+        console.log(`📧 Pact sealed with: ${email}`);
+        alert('PACTO SELADO 🖤');
+        e.target.reset();
+    });
+}
+
+// Resurrect button (scroll to top)
+const resurrectBtn = document.querySelector('.void-resurrect');
+
+if (resurrectBtn) {
+    resurrectBtn.addEventListener('click', () => {
+        lenis.scrollTo(0, {
+            duration: 3,
+            easing: (t) => 1 - Math.pow(1 - t, 4)
+        });
+    });
+}
+
+// Glitch effect on social links
+document.querySelectorAll('.void-social').forEach(link => {
+    link.addEventListener('mouseenter', (e) => {
+        const rune = e.currentTarget.querySelector('.social-rune');
+        gsap.to(rune, {
+            rotation: 360,
+            duration: 0.5,
+            ease: 'power2.out'
+        });
+    });
+});
 
 // ========================================
 // PERFORMANCE MONITORING

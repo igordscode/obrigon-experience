@@ -1,0 +1,653 @@
+/* Continuação do style.css - Sessões 2-7 */
+
+/* ========================================
+   SESSÃO 2: A PROCISSÃO (Scroll Horizontal)
+   ======================================== */
+
+.procession {
+    position: relative;
+    min-height: 100vh;
+    background: var(--black);
+    overflow: hidden;
+}
+
+.procession-header {
+    position: absolute;
+    top: var(--spacing-lg);
+    left: var(--spacing-lg);
+    z-index: 10;
+}
+
+.section-number {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--accent-red);
+    letter-spacing: 0.2em;
+}
+
+.procession-track {
+    display: flex;
+    gap: var(--spacing-xl);
+    padding: 0 var(--spacing-xl);
+    height: 100vh;
+    align-items: center;
+}
+
+.procession-item {
+    position: relative;
+    flex-shrink: 0;
+    width: 400px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-md);
+}
+
+.procession-spotlight {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(circle, rgba(255, 45, 85, 0.1) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.5s;
+    z-index: 0;
+}
+
+.procession-item:hover .procession-spotlight {
+    opacity: 1;
+}
+
+.procession-image {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.8));
+    transition: transform 0.5s;
+    z-index: 1;
+}
+
+.procession-item:hover .procession-image {
+    transform: scale(1.05);
+}
+
+.procession-info {
+    position: relative;
+    text-align: center;
+    z-index: 1;
+}
+
+.procession-name {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    letter-spacing: 0.2em;
+    color: var(--white);
+    margin-bottom: var(--spacing-xs);
+}
+
+.procession-price {
+    display: block;
+    font-size: 1rem;
+    color: var(--gray);
+    margin-bottom: var(--spacing-sm);
+}
+
+.procession-cta {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: transparent;
+    border: 2px solid var(--accent-red);
+    color: var(--white);
+    font-family: var(--font-display);
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.procession-cta:hover {
+    background: rgba(255, 45, 85, 0.1);
+    box-shadow: 0 0 20px rgba(255, 45, 85, 0.5);
+}
+
+/* ========================================
+   SESSÃO 3: OS INICIADOS
+   ======================================== */
+
+.initiated {
+    min-height: 100vh;
+    background: var(--deep-black);
+    padding: var(--spacing-xl) 0;
+}
+
+.initiated-header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.initiated-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.initiated-card {
+    position: relative;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.initiated-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) contrast(1.5);
+    transition: filter 0.3s;
+}
+
+.initiated-card:hover .initiated-image {
+    filter: grayscale(0%) contrast(1.2) saturate(1.5);
+}
+
+.initiated-scribble {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.initiated-card:hover .initiated-scribble {
+    opacity: 1;
+}
+
+.initiated-card:hover .initiated-scribble path,
+.initiated-card:hover .initiated-scribble circle {
+    animation: drawScribble 1s ease-out forwards;
+}
+
+@keyframes drawScribble {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.initiated-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: var(--spacing-md);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+    transform: translateY(100%);
+    transition: transform 0.3s;
+}
+
+.initiated-card:hover .initiated-overlay {
+    transform: translateY(0);
+}
+
+.initiated-name {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    letter-spacing: 0.2em;
+    color: var(--white);
+    margin-bottom: var(--spacing-xs);
+}
+
+.initiated-piece {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--accent-red);
+    letter-spacing: 0.1em;
+}
+
+/* ========================================
+   SESSÃO 4: A MEMBRANA (Manifesto)
+   ======================================== */
+
+.membrane {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.membrane-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(ellipse at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 45, 85, 0.1) 0%, transparent 50%),
+        linear-gradient(135deg, #0a0a0a 0%, #000000 100%);
+    transition: background 1.5s;
+}
+
+.membrane-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><circle cx="50" cy="50" r="40" fill="none" stroke="%23ffffff" stroke-width="0.5" opacity="0.05"/></svg>');
+    background-size: 100px 100px;
+    opacity: 0.3;
+}
+
+.membrane-content {
+    position: relative;
+    z-index: 10;
+    max-width: 800px;
+    padding: 0 var(--spacing-md);
+}
+
+.membrane-header {
+    margin-bottom: var(--spacing-lg);
+}
+
+.membrane-quote {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.2;
+    letter-spacing: 0.05em;
+    color: var(--white);
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+}
+
+.membrane-quote .highlight {
+    color: var(--accent-red);
+}
+
+.membrane-text {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--gray);
+}
+
+.membrane-text p {
+    margin-bottom: var(--spacing-md);
+}
+
+.membrane-text strong {
+    color: var(--white);
+    font-weight: 600;
+}
+
+.membrane-signature {
+    font-style: italic;
+    color: var(--accent-red);
+    text-align: right;
+}
+
+/* ========================================
+   SESSÃO 5: A ALUCINAÇÃO (Editorial)
+   ======================================== */
+
+.hallucination {
+    position: relative;
+    min-height: 100vh;
+    background: var(--deep-black);
+    overflow: hidden;
+}
+
+.hallucination-overlay {
+    position: absolute;
+    top: var(--spacing-md);
+    left: var(--spacing-md);
+    z-index: 10;
+}
+
+.hallucination-label {
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    letter-spacing: 0.3em;
+    color: var(--accent-cyan);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: 1px solid var(--accent-cyan);
+    background: rgba(0, 255, 255, 0.05);
+}
+
+.hallucination-sequence {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+.hallucination-frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    filter: contrast(1.2) saturate(0.8);
+}
+
+.hallucination-frame.active {
+    opacity: 1;
+}
+
+.hallucination-glitch {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(0deg,
+            rgba(0, 0, 0, 0.1) 0px,
+            transparent 2px,
+            transparent 4px);
+    pointer-events: none;
+    opacity: 0.1;
+}
+
+/* ========================================
+   SESSÃO 6: A AUTÓPSIA
+   ======================================== */
+
+.autopsy {
+    position: relative;
+    min-height: 100vh;
+    background: var(--deep-black);
+    padding: var(--spacing-xl) 0;
+}
+
+.autopsy-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(0, 100, 150, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 100, 150, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.3;
+}
+
+.autopsy-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.autopsy-content {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.autopsy-product {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.autopsy-image {
+    max-width: 400px;
+    max-height: 500px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 40px rgba(0, 100, 150, 0.3));
+}
+
+.autopsy-detail {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.autopsy-detail.revealed {
+    opacity: 1;
+}
+
+.detail-line {
+    width: 60px;
+    height: 2px;
+    background: var(--accent-cyan);
+    position: relative;
+}
+
+.detail-line::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background: var(--accent-cyan);
+    border-radius: 50%;
+}
+
+.detail-label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.detail-title {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+    color: var(--accent-cyan);
+}
+
+.detail-desc {
+    font-size: 0.75rem;
+    color: var(--gray);
+    letter-spacing: 0.1em;
+}
+
+.uv-light {
+    position: fixed;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(0, 255, 255, 0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9997;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.autopsy:hover .uv-light {
+    opacity: 1;
+}
+
+/* ========================================
+   SESSÃO 7: O VAZIO (Footer)
+   ======================================== */
+
+.void {
+    min-height: 100vh;
+    background: var(--deep-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.void-content {
+    text-align: center;
+    max-width: 600px;
+    padding: 0 var(--spacing-md);
+}
+
+.void-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    letter-spacing: 0.2em;
+    color: var(--white);
+    margin-bottom: var(--spacing-lg);
+}
+
+.void-form {
+    margin-bottom: var(--spacing-xl);
+}
+
+.pact-input {
+    width: 100%;
+    max-width: 400px;
+    padding: var(--spacing-sm) 0;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--accent-red);
+    color: var(--white);
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    text-align: center;
+    letter-spacing: 0.2em;
+    outline: none;
+    box-shadow: 0 0 20px rgba(255, 45, 85, 0.3);
+    transition: box-shadow 0.3s;
+    margin-bottom: var(--spacing-md);
+}
+
+.pact-input:focus {
+    box-shadow: 0 0 40px rgba(255, 45, 85, 0.8);
+}
+
+.pact-input::placeholder {
+    color: var(--gray);
+    opacity: 0.5;
+}
+
+.pact-submit {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: transparent;
+    border: 2px solid var(--accent-red);
+    color: var(--white);
+    font-family: var(--font-display);
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.pact-submit:hover {
+    background: rgba(255, 45, 85, 0.1);
+    box-shadow: 0 0 30px rgba(255, 45, 85, 0.5);
+}
+
+.void-socials {
+    display: flex;
+    gap: var(--spacing-lg);
+    justify-content: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.void-social {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+    text-decoration: none;
+    color: var(--gray);
+    transition: color 0.3s;
+}
+
+.void-social:hover {
+    color: var(--accent-red);
+}
+
+.social-rune {
+    font-size: 2rem;
+    transition: transform 0.3s;
+}
+
+.void-social:hover .social-rune {
+    transform: scale(1.2) rotate(180deg);
+}
+
+.social-name {
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    letter-spacing: 0.2em;
+}
+
+.void-resurrect {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: transparent;
+    border: 1px solid var(--gray);
+    color: var(--gray);
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    letter-spacing: 0.2em;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-bottom: var(--spacing-xl);
+}
+
+.void-resurrect:hover {
+    border-color: var(--white);
+    color: var(--white);
+}
+
+.void-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+    font-size: 0.75rem;
+    color: var(--gray);
+    letter-spacing: 0.2em;
+}
+
+/* ========================================
+   RESPONSIVE (Mobile)
+   ======================================== */
+
+@media (max-width: 768px) {
+    .procession-track {
+        flex-direction: column;
+        height: auto;
+        padding: var(--spacing-xl) var(--spacing-md);
+    }
+
+    .procession-item {
+        width: 100%;
+        height: auto;
+    }
+
+    .initiated-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .membrane-quote {
+        font-size: 2rem;
+    }
+
+    .autopsy-product {
+        height: 400px;
+    }
+
+    .autopsy-image {
+        max-width: 300px;
+    }
+
+    .void-footer {
+        flex-direction: column;
+        text-align: center;
+    }
+}
