@@ -15,7 +15,8 @@
     margin-bottom: 20px;
     /* Stronger reflection/shadow on the slab */
     filter: drop-shadow(0 50px 30px rgba(0, 0, 0, 0.8));
-    animation: float 6s ease-in-out infinite;
+    /* FIX: Restore fadeInScale animation so opacity goes to 1 */
+    animation: fadeInScale 1.5s ease-out 0.5s forwards, float 6s ease-in-out infinite 2s;
 }
 
 /* 2. The Altar Structure Container */
@@ -26,6 +27,9 @@
     align-items: center;
     margin-top: -40px;
     /* Slight overlap with levitation zone */
+    opacity: 0;
+    animation: fadeInUp 1.5s ease-out 1s forwards;
+    /* Animate structure in too */
 }
 
 /* 3. The Top Slab (Mesa do Altar) */
