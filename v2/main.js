@@ -243,44 +243,56 @@ if (hallucinationGlitch) {
 }
 
 // ========================================
-// SESSÃO 6: A AUTÓPSIA
+// SESSÃO 6: ANATOMIA DO ARTEFATO
 // ========================================
 
-const uvLight = document.querySelector('.uv-light');
-const autopsyDetails = document.querySelectorAll('.autopsy-detail');
+const ritualLight = document.querySelector('.ritual-light');
+const anatomyHotspots = document.querySelectorAll('.anatomy-hotspot');
 
-if (uvLight && autopsyDetails.length > 0) {
+// Ritual light follows mouse
+if (ritualLight) {
     document.addEventListener('mousemove', (e) => {
-        uvLight.style.left = e.clientX - 100 + 'px';
-        uvLight.style.top = e.clientY - 100 + 'px';
-
-        // Reveal details near UV light
-        autopsyDetails.forEach(detail => {
-            const rect = detail.getBoundingClientRect();
-            const detailX = rect.left + rect.width / 2;
-            const detailY = rect.top + rect.height / 2;
-
-            const distance = Math.hypot(e.clientX - detailX, e.clientY - detailY);
-
-            if (distance < 200) {
-                detail.classList.add('revealed');
-            } else {
-                detail.classList.remove('revealed');
-            }
-        });
+        ritualLight.style.left = e.clientX - 150 + 'px';
+        ritualLight.style.top = e.clientY - 150 + 'px';
     });
 }
 
-// Product reveal
-gsap.from('.autopsy-image', {
+// Hotspot interactions
+anatomyHotspots.forEach(hotspot => {
+    hotspot.addEventListener('mouseenter', () => {
+        cursorEye.classList.add('hover');
+    });
+
+    hotspot.addEventListener('mouseleave', () => {
+        cursorEye.classList.remove('hover');
+    });
+});
+
+// Image reveal animation
+gsap.from('.anatomy-image', {
     opacity: 0,
-    scale: 0.8,
+    scale: 0.9,
     scrollTrigger: {
-        trigger: '.autopsy-image',
+        trigger: '.anatomy-image',
         start: 'top 70%',
         end: 'top 40%',
         scrub: true
     }
+});
+
+// Hotspots appear sequentially
+anatomyHotspots.forEach((hotspot, i) => {
+    gsap.from(hotspot, {
+        opacity: 0,
+        scale: 0,
+        scrollTrigger: {
+            trigger: '.anatomy',
+            start: 'top 50%',
+            end: 'top 30%',
+            scrub: true
+        },
+        delay: i * 0.1
+    });
 });
 
 // ========================================
