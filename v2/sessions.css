@@ -545,6 +545,13 @@
     transform: translateY(-50%) translateX(0);
 }
 
+/* Primeiro hotspot sempre visível como exemplo */
+.anatomy-hotspot.visible .hotspot-info {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+    pointer-events: auto;
+}
+
 .hotspot-title {
     display: block;
     font-family: var(--font-display);
