@@ -10,9 +10,10 @@ Landing page imersiva para a marca de moda gótica de luxo **Obrigon**.
 
 ```
 obrigon/
-├── index.html          # Página principal
-├── style.css           # Estilos dark luxury
-├── main.js             # Animações GSAP + interações
+├── v2/                 # Versão Experimental (Unheimlich)
+├── index.html          # Página principal (v1)
+├── style.css           # Estilos dark luxury (v1)
+├── main.js             # Animações GSAP + interações (v1)
 ├── assets/             # Logo e assets
 │   └── logo.png
 ├── image/              # Imagens dos produtos
@@ -63,6 +64,7 @@ http://localhost:3030
 
 ## 📋 Documentação
 
+- **[V2 Experimental](v2/README.md)** — Documentação da versão conceito "Unheimlich"
 - **[Brainstorm](docs/brainstorm.md)** — Conceitos, referências e direções criativas
 - **[Walkthrough](docs/walkthrough.md)** — Implementação e testes realizados
 - **[Screenshots](docs/screenshots/)** — Gravações do site funcionando

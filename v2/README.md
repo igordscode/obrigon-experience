@@ -8,7 +8,7 @@
 
 Landing page imersiva que transforma o e-commerce em um **ritual gótico** através de 7 sessões narrativas:
 
-1. **O ALTAR** — A entrada do templo
+1. **O ALTAR** — Altar de pedra com estrutura física e velas
 2. **A PROCISSÃO** — Galeria horizontal de artefatos
 3. **OS INICIADOS** — Prova social com estética CCTV
 4. **A MEMBRANA** — Manifesto orgânico
@@ -66,17 +66,18 @@ http://localhost:3031
 ```
 v2/
 ├── index.html          # HTML principal
-├── style.css           # Global + Sessão 1
+├── style.css           # Global
+├── loader.css          # Estilos do Loader
+├── altar-fix.css       # Redesign do Altar (Pedra)
 ├── sessions.css        # Sessões 2-7
 ├── main.js             # GSAP + interações
 ├── README.md           # Este arquivo
-└── brainstorm/         # Referências visuais
+├── assets/             # Cópia local de assets
+└── image/              # Cópia local de imagens
 ```
 
-**Assets compartilhados:**
-- `../assets/logo.png`
-- `../image/` (produtos)
-- `../image/famosos/` (artistas)
+**Assets:**
+Para evitar problemas de path no servidor local, as pastas `assets` e `image` foram copiadas para a raiz de `v2/`.
 
 ---
 
