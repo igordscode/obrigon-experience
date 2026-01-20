@@ -52,14 +52,65 @@ lenis.on('scroll', ScrollTrigger.update);
 const cursorEye = document.querySelector('.cursor-eye');
 const cursorPupil = document.querySelector('.cursor-pupil');
 
+// Track mouse position and velocity
+let mouseX = 0;
+let mouseY = 0;
+let lastMouseX = 0;
+let lastMouseY = 0;
+let velocityX = 0;
+let velocityY = 0;
+let isMoving = false;
+let moveTimeout;
+
 // Follow mouse
 document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+    // Move eye to cursor position
     gsap.to(cursorEye, {
-        x: e.clientX,
-        y: e.clientY,
+        x: mouseX,
+        y: mouseY,
         duration: 0.3,
         ease: 'power2.out'
     });
+
+    // Calculate velocity (direction and speed)
+    velocityX = mouseX - lastMouseX;
+    velocityY = mouseY - lastMouseY;
+
+    // Limit pupil movement (max 8px from center)
+    const maxMove = 8;
+    const pupilX = Math.max(-maxMove, Math.min(maxMove, velocityX * 0.5));
+    const pupilY = Math.max(-maxMove, Math.min(maxMove, velocityY * 0.5));
+
+    // Move pupil based on mouse direction
+    gsap.to(cursorPupil, {
+        x: pupilX,
+        y: pupilY,
+        duration: 0.15,
+        ease: 'power2.out'
+    });
+
+    // Update last position
+    lastMouseX = mouseX;
+    lastMouseY = mouseY;
+
+    // Mark as moving
+    isMoving = true;
+
+    // Reset moving state after 100ms of no movement
+    clearTimeout(moveTimeout);
+    moveTimeout = setTimeout(() => {
+        isMoving = false;
+        // Return pupil to center when stopped
+        gsap.to(cursorPupil, {
+            x: 0,
+            y: 0,
+            duration: 0.4,
+            ease: 'power2.out'
+        });
+    }, 100);
 });
 
 // Hover effect on interactive elements
