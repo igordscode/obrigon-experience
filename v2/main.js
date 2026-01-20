@@ -79,16 +79,16 @@ document.addEventListener('mousemove', (e) => {
     velocityX = mouseX - lastMouseX;
     velocityY = mouseY - lastMouseY;
 
-    // Limit pupil movement (max 8px from center)
-    const maxMove = 8;
-    const pupilX = Math.max(-maxMove, Math.min(maxMove, velocityX * 0.5));
-    const pupilY = Math.max(-maxMove, Math.min(maxMove, velocityY * 0.5));
+    // Limit pupil movement (max 15px from center for more dramatic effect)
+    const maxMove = 15;
+    const pupilX = Math.max(-maxMove, Math.min(maxMove, velocityX * 1.5));
+    const pupilY = Math.max(-maxMove, Math.min(maxMove, velocityY * 1.5));
 
     // Move pupil based on mouse direction
     gsap.to(cursorPupil, {
         x: pupilX,
         y: pupilY,
-        duration: 0.15,
+        duration: 0.1,
         ease: 'power2.out'
     });
 
